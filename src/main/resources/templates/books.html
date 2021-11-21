@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Manage Books</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+</head>
+<body>
+<div class="container-fluid text-center">
+  <div> <h1>Manage Books</h1></div>
+  <div class="m-2">
+    <a class="h3" th:href="@{/books/new}">Add New Book</a>
+  </div>
+  <div>
+    <table class="table table-bordered">
+      <thead class="thead-dark">
+      <tr>
+        <th>ID</th>
+        <th>Book Name</th>
+        <th>Year</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <th:block th:each="book : ${listBooks}">
+
+        <tr>
+          <td>[[${book.id}]] </td>
+          <td>[[${book.bookName}]] </td>
+          <td>[[${book.year}]] </td>
+          <td>
+            <a class="h4 mr-3" th:href="@{'/books/edit/' + ${book.id}}">Edit</a>
+            <a class="h4 mr-3" th:href="@{'/books/delete/' + ${book.id}}">Delete</a>
+          </td>
+        </tr>
+      </th:block>
+      </tbody>
+    </table>
+  </div>
+</div>
+</body>
+</html>

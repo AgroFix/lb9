@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Manage Licenses</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+</head>
+<body>
+<div class="container-fluid text-center">
+  <div> <h1>Manage Licenses</h1></div>
+  <div class="m-2">
+    <a class="h3" th:href="@{/licenses/new}">Add New License</a>
+  </div>
+  <div>
+    <table class="table table-bordered">
+      <thead class="thead-dark">
+      <tr>
+        <th>ID</th>
+        <th>Kind</th>
+        <th>Deadline</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <th:block th:each="license : ${listLicenses}">
+        <tr>
+          <td>[[${license.id}]] </td>
+          <td>[[${license.kind}]] </td>
+          <td>[[${license.ddline}]] </td>
+          <td>
+            <a class="h4 mr-3" th:href="@{'/licenses/edit/' + ${license.id}}">Edit</a>
+            <a class="h4 mr-3" th:href="@{'/licenses/delete/' + ${license.id}}">Delete</a>
+          </td>
+        </tr>
+      </th:block>
+      </tbody>
+    </table>
+  </div>
+</div>
+</body>
+</html>
